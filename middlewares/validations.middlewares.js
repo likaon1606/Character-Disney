@@ -3,6 +3,21 @@ const { body, validationResult } = require('express-validator');
 // Utils
 const { AppError } = require('../utils/appError');
 
+// Validations users
+const createUserValidations = [
+    body('name').notEmpty().withMessage('Name cannot be empty'),
+    body('email')
+      .notEmpty()
+      .withMessage('Email cannot be empty')
+      .isEmail()
+      .withMessage('Must be a valid email'),
+    body('password')
+      .notEmpty()
+      .withMessage('Password cannot be empty')
+      .isLength({ min: 8 })
+      .withMessage('Password must be at least 8 characters long'),
+  ];
+
 // Validations characters
 const createCharacterValidations = [
     body('name').notEmpty().withMessage('Name cannot be empty'),
@@ -44,6 +59,7 @@ const checkValidations = (req, res, next) => {
 };
 
 module.exports = {
+    createUserValidations,
     createCharacterValidations,
     checkValidations,
     createMovieValidations,

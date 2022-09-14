@@ -1,13 +1,8 @@
-const dotenv = require('dotenv');
+// Utils
+const { catchAsync } = require('../utils/catchAsync');
 
 // Models
 const { Movie } = require('../models/movie.model');
-
-// Utils
-const { catchAsync } = require('../utils/catchAsync');
-const { AppError } = require('../utils/appError');
-
-dotenv.config({ path: './config.env' });
 
 // CRUD'S
 const getAllMovies = catchAsync(async (req, res, next) => {
@@ -29,7 +24,7 @@ const getMovieId = catchAsync(async (req, res, next) => {
 });
 
 const createMovie = catchAsync(async (req, res, next) => {
-    const { movieImgUrl, title, creationDate, qualification } = req.body;
+    const { movieImgUrl, title, creationDate, qualification, characterId, genderId} = req.body;
 
     // INSERT INTO...
     const newMovie = await Movie.create({
@@ -37,10 +32,12 @@ const createMovie = catchAsync(async (req, res, next) => {
         title,
         creationDate,
         qualification,
+        characterId,
+        genderId,
     });
 
     res.status(201).json({
-        status: 'success', newMovie
+        status: 'success', newMovie,
     });
 
 });

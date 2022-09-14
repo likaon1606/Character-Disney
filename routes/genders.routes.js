@@ -5,6 +5,8 @@ const {
     genderExists,
 } = require('../middlewares/gender.middlewares');
 
+const { protectToken } = require('../middlewares/users.middlewares');
+
 const {
     createGenderValidations,
     checkValidations,
@@ -20,6 +22,9 @@ const {
 } = require('../controllers/gender.controllers');
 
 const router = express.Router();
+
+// Apply protectToken middleware
+router.use(protectToken);
 
 // Call CRUD´S
 router.post(

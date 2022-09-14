@@ -1,40 +1,29 @@
 const { DataTypes } = require("sequelize");
 const { db } = require("../utils/database");
 
-const Character = db.define("character", {
+const User = db.define("user", {
     id: {
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
         type: DataTypes.INTEGER,
     },
-    characterImgUrl: {
-        type: DataTypes.STRING,
-    },
     name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    age: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    weight: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    history: {
+    email: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    password: {
+        allowNull: false,
+        type: DataTypes.STRING,
     },
     status: {
         defaultValue: 'active',
         type: DataTypes.STRING,
     },
-    movieId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
 });
 
-module.exports = { Character };
+module.exports = { User };

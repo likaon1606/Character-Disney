@@ -9,12 +9,14 @@ const { globalErrorHandler } = require('./controllers/errors.controllers');
 const { charactersRouter } = require('./routes/characters.routes');
 const { moviesRouter } = require('./routes/movies.routes');
 const { gendersRouter } = require('./routes/genders.routes');
+const { usersRouter } = require('./routes/users.routes');
 
 // Models
 // !CAMBIARLO POR EL INIT MODEL PARA RELACIONAR LOS MODELOS ENTRE SI
-const { Character } = require('./models/character.model');
-const { Movie } = require('./models/movie.model');
-const { Gender } = require('./models/gender.model');
+// const { Character } = require('./models/character.model');
+// const { Movie } = require('./models/movie.model');
+// const { Gender } = require('./models/gender.model');
+// const { User } = require('./models/users.model');
 
 // Init express app
 const app = express();
@@ -38,6 +40,7 @@ app.use(limiter);
 app.use('/api/v1/characters', charactersRouter);
 app.use('/api/v1/movies', moviesRouter);
 app.use('/api/v1/genders', gendersRouter);
+app.use('/api/v1/users', usersRouter);
 
 // Global error handler
 app.use('*', globalErrorHandler);

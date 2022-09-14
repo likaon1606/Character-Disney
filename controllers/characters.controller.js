@@ -5,7 +5,6 @@ const { Character } = require('../models/character.model');
 
 // Utils
 const { catchAsync } = require('../utils/catchAsync');
-const { AppError } = require('../utils/appError');
 
 dotenv.config({ path: './config.env' });
 
@@ -29,7 +28,7 @@ const getCharacterId = catchAsync(async (req, res, next) => {
 });
 
 const createCharacter = catchAsync(async (req, res, next) => {
-    const { name, age, weight, history } = req.body;
+    const { name, age, weight, history, movieId } = req.body;
 
     // INSERT INTO...
     const newCharacter = await Character.create({
@@ -37,6 +36,7 @@ const createCharacter = catchAsync(async (req, res, next) => {
         age,
         weight,
         history,
+        movieId,
     });
 
     res.status(201).json({

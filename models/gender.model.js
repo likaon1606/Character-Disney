@@ -12,18 +12,6 @@ const Gender = db.define('gender', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    // movieImgUrlId: {
-    //     type: DataTypes.STRING,
-    //     allowNull: false,
-    // },
-    // movieId: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: false,
-    // }
-    // genderId: {
-    //     type: DataTypes.STRING,
-    //     allowNull: false,
-    // },
     status: {
         defaultValue: 'active',
         type: DataTypes.STRING,

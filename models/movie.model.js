@@ -28,12 +28,12 @@ const Movie = db.define('movie', {
         defaultValue: 'active',
         type: DataTypes.STRING,
     },
-    // characterId: {
+    characterId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    // genderId: {
     //     type: DataTypes.INTEGER,
-    //     allowNull: false,
-    // }
-    // gender: {
-    //     type: DataTypes.STRING,
     //     allowNull: false,
     // },
 });

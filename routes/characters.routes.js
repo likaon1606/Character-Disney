@@ -5,6 +5,8 @@ const {
     characterExists,
 } = require('../middlewares/character.middlewares');
 
+const { protectToken } = require('../middlewares/users.middlewares');
+
 const {
     createCharacterValidations,
     checkValidations,
@@ -21,6 +23,9 @@ const {
 
 const router = express.Router();
 
+// Apply protectToken middleware
+router.use(protectToken);
+
 // Call CRUD´S
 router.post(
     '/',
@@ -28,6 +33,7 @@ router.post(
     checkValidations,
     createCharacter,
 );
+
 
 router.get('/', getAllCharacters);
 

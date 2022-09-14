@@ -1,6 +1,8 @@
 const express = require('express');
 
 // Midlewares
+const { protectToken } = require('../middlewares/users.middlewares');
+
 const {
     movieExists,
 } = require('../middlewares/movie.middlewares');
@@ -21,6 +23,9 @@ const {
 
 const router = express.Router();
 
+// Apply protectToken middleware
+router.use(protectToken);
+
 // Call CRUD´S
 router.post(
     '/',
@@ -35,6 +40,6 @@ router
   .route('/:id')
   .get(movieExists, getMovieId)
   .patch(movieExists, updateMovie)
-  .delete(movieExists,  deleteMovie);
+  .delete(movieExists, deleteMovie);
 
 module.exports = { moviesRouter: router };
