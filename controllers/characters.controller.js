@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 
 // Models
 const { Character } = require('../models/character.model');
+const { Movie } = require('../models/movie.model');
 
 // Utils
 const { catchAsync } = require('../utils/catchAsync');
@@ -12,6 +13,7 @@ dotenv.config({ path: './config.env' });
 const getAllCharacters = catchAsync(async (req, res, next) => {
     const characters = await Character.findAll({
         attributes: {exclude: ['age', 'weight', 'history']},
+        include: { model: Movie },
    }); 
 
     res.status(200).json({

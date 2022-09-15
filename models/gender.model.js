@@ -16,6 +16,10 @@ const Gender = db.define('gender', {
         defaultValue: 'active',
         type: DataTypes.STRING,
     },
+    movieId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
 });
 
 module.exports = { Gender };

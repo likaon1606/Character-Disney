@@ -28,11 +28,12 @@ const getGenderId = catchAsync(async (req, res, next) => {
 });
 
 const createGender = catchAsync(async (req, res, next) => {
-    const { name } = req.body;
+    const { name, movieId } = req.body;
 
     // INSERT INTO...
     const newGender = await Gender.create({
         name,
+        movieId,
     });
 
     res.status(201).json({

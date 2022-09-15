@@ -32,10 +32,10 @@ const Movie = db.define('movie', {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    // genderId: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: false,
-    // },
+    genderId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
 });
 
 module.exports = { Movie };

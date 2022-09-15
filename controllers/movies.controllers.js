@@ -3,11 +3,14 @@ const { catchAsync } = require('../utils/catchAsync');
 
 // Models
 const { Movie } = require('../models/movie.model');
+const { Character } = require('../models/character.model');
+const { Gender } = require('../models/gender.model');
 
 // CRUD'S
 const getAllMovies = catchAsync(async (req, res, next) => {
     const movie = await Movie.findAll({
         attributes: {exclude: ['qualification']},
+        include: [{ model: Character }, { model: Gender }],
    }); 
 
     res.status(200).json({
