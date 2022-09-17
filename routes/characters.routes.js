@@ -21,6 +21,9 @@ const {
     deleteCharacter,
 } = require('../controllers/characters.controller');
 
+// Utils
+const { upload } = require('../utils/multer');
+
 const router = express.Router();
 
 // Apply protectToken middleware
@@ -29,6 +32,7 @@ router.use(protectToken);
 // Call CRUD´S
 router.post(
     '/',
+    upload.single('profileimg'),
     createCharacterValidations,
     checkValidations,
     createCharacter,

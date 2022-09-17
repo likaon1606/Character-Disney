@@ -12,13 +12,13 @@ const Gender = db.define('gender', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    status: {
-        defaultValue: 'active',
-        type: DataTypes.STRING,
-    },
     movieId: {
         type: DataTypes.INTEGER,
         allowNull: false,
+    },
+    status: {
+        defaultValue: 'active',
+        type: DataTypes.STRING,
     },
 });
 

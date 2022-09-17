@@ -1,4 +1,5 @@
 const dotenv = require('dotenv');
+const { ref, uploadBytes } = require('firebase/storage');
 
 // Models
 const { Character } = require('../models/character.model');
@@ -6,6 +7,7 @@ const { Movie } = require('../models/movie.model');
 
 // Utils
 const { catchAsync } = require('../utils/catchAsync');
+const { storage } = require('../utils/firebase');
 
 dotenv.config({ path: './config.env' });
 
@@ -32,6 +34,9 @@ const getCharacterId = catchAsync(async (req, res, next) => {
 const createCharacter = catchAsync(async (req, res, next) => {
     const { name, age, weight, history, movieId } = req.body;
 
+    const imgRef = ref(storage, `characters/${req.file.originalname}`);
+    const imgUpLoaded = await uploadBytes(imgRef, req.file.buffer);
+
     // INSERT INTO...
     const newCharacter = await Character.create({
         name,
@@ -39,6 +44,7 @@ const createCharacter = catchAsync(async (req, res, next) => {
         weight,
         history,
         movieId,
+        characterImgUrl: imgUpLoaded.metadata.fullPath,
     });
 
     res.status(201).json({

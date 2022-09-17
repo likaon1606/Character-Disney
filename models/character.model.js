@@ -10,6 +10,7 @@ const Character = db.define("character", {
     },
     characterImgUrl: {
         type: DataTypes.STRING,
+        allowNull: false,
     },
     name: {
         type: DataTypes.STRING,
@@ -27,13 +28,13 @@ const Character = db.define("character", {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    status: {
-        defaultValue: 'active',
-        type: DataTypes.STRING,
-    },
     movieId: {
         type: DataTypes.INTEGER,
         allowNull: false,
+    },
+    status: {
+        defaultValue: 'active',
+        type: DataTypes.STRING,
     },
 });
 

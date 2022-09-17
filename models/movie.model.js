@@ -24,18 +24,15 @@ const Movie = db.define('movie', {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    status: {
-        defaultValue: 'active',
-        type: DataTypes.STRING,
-    },
     characterId: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    genderId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+    status: {
+        defaultValue: 'active',
+        type: DataTypes.STRING,
     },
+
 });
 
 module.exports = { Movie };
