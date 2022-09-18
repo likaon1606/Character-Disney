@@ -12,7 +12,7 @@ const { gendersRouter } = require('./routes/genders.routes');
 const { usersRouter } = require('./routes/users.routes');
 
 // Models
-// !CAMBIARLO POR EL INIT MODEL PARA RELACIONAR LOS MODELOS ENTRE SI
+// !Change for init model
 // const { Character } = require('./models/character.model');
 // const { Movie } = require('./models/movie.model');
 // const { Gender } = require('./models/gender.model');

@@ -27,7 +27,7 @@ const getMovieId = catchAsync(async (req, res, next) => {
 });
 
 const createMovie = catchAsync(async (req, res, next) => {
-    const { movieImgUrl, title, creationDate, qualification, characterId, genderId} = req.body;
+    const { movieImgUrl, title, creationDate, qualification, characterId} = req.body;
 
     // INSERT INTO...
     const newMovie = await Movie.create({
@@ -36,7 +36,6 @@ const createMovie = catchAsync(async (req, res, next) => {
         creationDate,
         qualification,
         characterId,
-        genderId,
     });
 
     res.status(201).json({

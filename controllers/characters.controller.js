@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-const { ref, uploadBytes } = require('firebase/storage');
+const { ref, uploadBytes, getDownloadURL } = require('firebase/storage');
 
 // Models
 const { Character } = require('../models/character.model');
@@ -26,13 +26,18 @@ const getAllCharacters = catchAsync(async (req, res, next) => {
 const getCharacterId = catchAsync(async (req, res, next) => {
     const { character } = req;
 
+    // GET url from Firebise
+    const imgRef = ref(storage, character.characterImgUrl);
+    const url = await getDownloadURL(imgRef);
+
     res.status(200).json({
         character,
+        url,
     });
 });
 
 const createCharacter = catchAsync(async (req, res, next) => {
-    const { name, age, weight, history, movieId } = req.body;
+    const { name, age, weight, history, movieId} = req.body;
 
     const imgRef = ref(storage, `characters/${req.file.originalname}`);
     const imgUpLoaded = await uploadBytes(imgRef, req.file.buffer);

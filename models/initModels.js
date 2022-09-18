@@ -13,8 +13,8 @@ Movie.hasMany(Gender, { foreignKey: 'movieId' });
 Gender.belongsTo(Movie);
 
 //1 character <--> M Movies
-Character.hasMany(Movie, { foreignKey: 'characterId' });
-Movie.belongsTo(Character);
+// Character.hasMany(Movie, { foreignKey: 'characterId' });
+// Movie.belongsTo(Character);
 
 };
 
